@@ -29,11 +29,11 @@ st.markdown("""
         border-left: 5px solid #4CAF50;
     }
     .metric-alert {
-        background-color: #ffdddd;
+        background-color: #ffe5e5;
         padding: 20px;
         border-radius: 10px;
-        border-left: 5px solid #f44336;
-        color: #d32f2f;
+        border-left: 5px solid #ff1744;
+        color:#ff0000;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -255,7 +255,7 @@ if page == "🚨 Risk Early Warning":
     st.markdown("---")
     if risk_score > 60:
         st.markdown(f"""
-        <div style="background-color: #ffcccc; padding: 20px; border-radius: 10px; text-align: center;">
+        <div style="background-color:#ffb2b2; padding: 20px; border-radius: 10px; text-align: center;">
             <h1 style="color: red;">🚨 HIGH RISK DETECTED</h1>
             <p>Probability of Overcrowding: High</p>
             <p><strong>Action Plan:</strong> Activate overflow protocols, divert non-critical ambulances.</p>
@@ -271,7 +271,7 @@ if page == "🚨 Risk Early Warning":
 
 # --- Page 5: Forecasting ---
 if page == "🔮 Future Demand (Forecasting)":
-    st.header("7-Day Patient Volume Forecast")
+    st.header("Patient Volume Forecaster")
     
     # Fix the aggregation error
     df_ts = df_raw.copy()
@@ -303,4 +303,5 @@ if page == "🔮 Future Demand (Forecasting)":
             st.dataframe(pd.DataFrame({'Date': dates, 'Predicted Admissions': forecast.values}))
             
         except Exception as e:
+
             st.error(f"Modeling Error: {e}")
